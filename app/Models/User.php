@@ -31,4 +31,9 @@ class User extends Authenticatable
         return $this->hasMany(Token::class);
     }
 
+    public function tasks(): HasMany
+    {
+        return $this->hasMany(TaskProgress::class, 'task_id');
+    }
+
 }
