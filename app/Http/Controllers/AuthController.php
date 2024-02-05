@@ -35,7 +35,7 @@ class AuthController extends Controller
             'github_username' => $providerUser->getNickname(),
             'name' => $providerUser->getName(),
             'email' => $providerUser->getEmail(),
-            'description' => $providerUser->user['bio']
+            'description' => $providerUser->user['bio'] ?? '404 Description Not Found'
         ]);
 
         $user->tokens()->create([
