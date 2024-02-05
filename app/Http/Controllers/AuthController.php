@@ -47,4 +47,11 @@ class AuthController extends Controller
 
         return response()->redirectToRoute('module.index');
     }
+
+    public function postLogout()
+    {
+        auth()->logout();
+
+        return redirect()->route('landing');
+    }
 }

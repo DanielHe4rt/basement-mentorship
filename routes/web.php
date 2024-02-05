@@ -23,6 +23,9 @@ Route::get('/', [DashboardController::class, 'getDashboard'])
 
 Route::get('/oauth/{provider}/redirect', [AuthController::class, 'getRedirect'])->name('auth.redirect');
 Route::get('/oauth/{provider}/callback', [AuthController::class, 'getAuthenticate'])->name('auth.store');
+Route::post('/oauth/logout', [AuthController::class, 'postLogout'])
+    ->middleware('auth')
+    ->name('auth.logout');
 
 
 Route::prefix('/modules')

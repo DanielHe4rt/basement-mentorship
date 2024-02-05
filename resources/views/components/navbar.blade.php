@@ -1,9 +1,8 @@
-
-
 <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
     <div class="container" bis_skin_checked="1">
         <a class="navbar-brand" href="#">{{ config('app.name') }}</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
+                aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarColor01" bis_skin_checked="1">
@@ -17,10 +16,35 @@
                     <a class="nav-link" href="#">Features</a>
                 </li>
             </ul>
-            <form class="d-flex">
+            @auth()
 
-                <a href="{{ route('auth.redirect', ['provider' => 'github']) }}" class="btn btn-secondary my-2 my-sm-0" type="submit">Sign In</a>
-            </form>
+                <div class="d-flex ">
+                    <ul class="navbar-nav me-auto">
+                        <li>
+                            <img src="{{ 'https://github.com/' . auth()->user()->github_username . '.png' }}"
+                                 alt="{{ auth()->user()->name }}" class="rounded-circle" width="40" height="40">
+                        </li>
+                        <li>
+                            <span class="nav-link">{{ auth()->user()->name }}</span>
+                        </li>
+                        <li>
+                            <form action="{{ route('auth.logout') }}" method="post">
+                                @csrf
+                                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Sign Out</button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            @endauth
+
+            @guest()
+
+                <form class="d-flex">
+
+                    <a href="{{ route('auth.redirect', ['provider' => 'github']) }}"
+                       class="btn btn-secondary my-2 my-sm-0" type="submit">Sign In</a>
+                </form>
+            @endguest
         </div>
     </div>
 </nav>
