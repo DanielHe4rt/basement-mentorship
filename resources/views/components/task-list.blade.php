@@ -16,7 +16,7 @@
             </div>
             <div class="col">
                 <div class="card-body">
-                    <h5 class="card-title">#1 - Redação ENEM Tech</h5>
+                    <h5 class="card-title">#{{ $task->id }} - {{ $task->title }}</h5>
                     <p class="card-text">
                         Nessa etapa você vai ter que escrever um resumo sobre uma tecnologia bem básica.
                     </p>
@@ -25,7 +25,7 @@
                         <div class="col">
                             <p class="card-text">
                                 <small class="text-body-secondary">
-                                    <i class="fa-solid fa-calendar"></i>: 4 Feb
+                                    <i class="fa-solid fa-calendar"></i>: {{ $task->created_at->diffForHumans() }}
                                 </small>
                                 <small class="text-body-secondary">
                                     <i class="fa-solid fa-user"></i>: 10
@@ -41,7 +41,8 @@
                                 @if($userTask->status == 'completed')
                                     <a href="#" class="btn btn-success">Task Completed!</a>
                                 @else
-                                    <a href="#" class="btn btn-primary">View Task</a>
+                                    <a href="{{ route('tasks.show', ['taskProgress' => $userTask]) }}"
+                                       class="btn btn-primary">View Task</a>
                                 @endif
 
                             @else

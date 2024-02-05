@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('task_id')->constrained('tasks');
             $table->string('status')->default('started');
             $table->text('content')->nullable();
+            $table->text('feedback')->nullable();
             $table->timestamp('delivered_at')->nullable();
             $table->timestamps();
         });

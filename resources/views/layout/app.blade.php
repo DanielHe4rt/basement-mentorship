@@ -14,6 +14,8 @@
     <x-navbar/>
     <div class="container">
     @yield('content')
+
+        @yield('script', '')
     </div>
 </body>
 </html>

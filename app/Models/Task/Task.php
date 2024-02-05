@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Task;
 
 use Database\Factories\TaskFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Task extends Model
 {
@@ -17,7 +18,17 @@ class Task extends Model
         'thumbnail_url',
         'description',
         'deadline',
+        'tips'
     ];
+
+    protected $casts = [
+        'tips' => 'array'
+    ];
+
+    public function todos(): HasMany
+    {
+        return $this->hasMany(Todo::class);
+    }
 
     protected static function newFactory(): TaskFactory
     {

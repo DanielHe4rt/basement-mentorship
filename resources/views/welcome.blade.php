@@ -2,7 +2,7 @@
 
 
 @section('content')
-    @auth()
+    @auth
         {{ auth()->user()->github_username }}
 
         <x-task-list :tasks="$tasks" :userTasks="$userTasks"/>

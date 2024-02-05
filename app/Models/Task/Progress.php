@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Task;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class TaskProgress extends Model
+class Progress extends Model
 {
 
     protected $table = 'user_tasks_progress';
@@ -16,11 +17,12 @@ class TaskProgress extends Model
         'task_id',
         'status',
         'content',
+        'feedback',
         'delivered_at'
     ];
 
     protected $casts = [
-        'delivered_at' => 'datetime'
+        'delivered_at' => 'datetime',
     ];
 
     public function user(): BelongsTo
@@ -31,5 +33,15 @@ class TaskProgress extends Model
     public function task(): BelongsTo
     {
         return $this->belongsTo(Task::class);
+    }
+
+    public function todos(): BelongsToMany
+    {
+        return $this->belongsToMany(
+            Todo::class,
+            'task_progress_todos',
+            'task_progress_id',
+            'task_todo_id'
+        );
     }
 }

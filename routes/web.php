@@ -16,10 +16,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [DashboardController::class, 'getDashboard'])->name('landing');
+Route::get('/', [DashboardController::class, 'getDashboard'])
+    ->name('landing');
 
 
 Route::get('/oauth/{provider}/redirect', [AuthController::class, 'getRedirect'])->name('auth.redirect');
 Route::get('/oauth/{provider}/callback', [AuthController::class, 'getAuthenticate'])->name('auth.store');
 
 Route::post('/tasks/{task}/init', [TasksController::class, 'postInitTask'])->name('tasks.init');
+Route::post('/tasks/{progress}/{action}', [TasksController::class, 'postTaskAction'])->name('tasks.action');
+
+Route::get('/tasks/{taskProgress}', [TasksController::class, 'getTask'])->name('tasks.show');
