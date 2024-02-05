@@ -8,13 +8,16 @@
         <div class="collapse navbar-collapse" id="navbarColor01" bis_skin_checked="1">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Home
+                    <a class="nav-link {{ request()->routeIs('landing') ? 'active' : '' }} }}" href="{{ route('landing') }}">Inicio
                         <span class="visually-hidden">(current)</span>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Features</a>
-                </li>
+                @auth()
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('module.index') ? 'active' : '' }}" href="{{ route('module.index') }}">Mentorias</a>
+                    </li>
+                @endauth
+
             </ul>
             @auth()
 
