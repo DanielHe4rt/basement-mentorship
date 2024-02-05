@@ -35,7 +35,7 @@ class User extends Authenticatable
 
     public function tasks(): HasMany
     {
-        return $this->hasMany(Progress::class, 'task_id');
+        return $this->hasMany(Progress::class, 'user_id');
     }
 
     public function modules(): BelongsToMany

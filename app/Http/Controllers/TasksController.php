@@ -22,13 +22,24 @@ class TasksController extends Controller
 
     public function postInitTask(StartTaskRequest $request, Module $module, Task $task)
     {
-        Progress::query()
+        $progress = auth()
+            ->user()
+            ->tasks()
+            ->where(['task_id' => $task->id])
+            ->first();
+
+        if ($progress) {
+            return redirect()->route('tasks.show', ['module' => $module->id, 'taskProgress' => $progress->id]);
+        }
+
+        $progress = auth()
+            ->user()
+            ->tasks()
             ->create([
-                'user_id' => auth()->id(),
                 'task_id' => $task->getKey()
             ]);
 
-        return redirect()->route('landing');
+        return redirect()->route('tasks.show', ['module' => $module->id, 'taskProgress' => $progress->id]);
     }
 
     public function postTaskAction(

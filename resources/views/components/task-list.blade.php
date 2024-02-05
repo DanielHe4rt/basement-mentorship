@@ -36,7 +36,7 @@
                             </p>
                         </div>
                         <div class="col text-right">
-                            @if($userTask = $userTasks->find($task))
+                            @if($userTask = $userTasks->first(fn ($userTask) => $userTask->task_id == $task->id))
 
                                 @if($userTask->status == 'completed')
                                     <a href="#" class="btn btn-success">Task Completed!</a>
