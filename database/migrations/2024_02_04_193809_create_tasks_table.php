@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('thumbnail_url');
             $table->string('description');
             $table->timestamp('deadline');
+            $table->tinyInteger('order');
             $table->text('tips')->nullable();
             $table->timestamps();
         });

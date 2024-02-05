@@ -24,6 +24,6 @@ class ModulesController extends Controller
     {
         $module->users()->attach(request()->user()->id);
 
-        return redirect()->route('tasks.index');
+        return redirect()->route('modules.show', $module);
     }
 }

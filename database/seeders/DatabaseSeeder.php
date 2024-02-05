@@ -15,11 +15,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $module =  Module::factory()
+        $module = Module::factory()
             ->create();
 
-        $tasks = Task::factory()->count(3)->create(['module_id' => $module->id]);
-
-        $tasks->each(fn (Task $task) => Todo::factory()->create(['task_id' => $task->id]));
+        foreach (range(1, 3) as $i) {
+            $task = Task::factory()->create(['module_id' => $module->id, 'order' => $i]);
+            Todo::factory()->create(['task_id' => $task->id]);
+        }
     }
 }

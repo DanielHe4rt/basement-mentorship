@@ -47,7 +47,6 @@ class TasksController extends Controller
                 }
             },
             TaskActionEnum::Submit => throw new \Exception('To be implemented'),
-            default => throw ValidationException::withMessages(['fudeu' => 'bacana'])
         };
 
         $fn();

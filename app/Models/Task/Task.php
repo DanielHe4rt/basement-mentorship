@@ -18,6 +18,7 @@ class Task extends Model
         'thumbnail_url',
         'description',
         'deadline',
+        'order',
         'tips'
     ];
 
