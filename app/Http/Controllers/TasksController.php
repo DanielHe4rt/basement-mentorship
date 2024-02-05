@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Enums\TaskActionEnum;
+use App\Http\Requests\StartTaskRequest;
 use App\Http\Requests\TaskRequest;
+use App\Models\Module;
 use App\Models\Task\Progress;
 use App\Models\Task\Task;
 use Illuminate\Validation\ValidationException;
@@ -11,19 +13,19 @@ use Illuminate\Validation\ValidationException;
 class TasksController extends Controller
 {
 
-    public function getTask(Progress $taskProgress)
+    public function getTask(Module $module, Progress $taskProgress)
     {
         return view('tasks.view', [
             'taskProgress' => $taskProgress
         ]);
     }
 
-    public function postInitTask(Task $task)
+    public function postInitTask(StartTaskRequest $request, Module $module, Task $task)
     {
         Progress::query()
             ->create([
                 'user_id' => auth()->id(),
-                'task_id' => $task
+                'task_id' => $task->getKey()
             ]);
 
         return redirect()->route('landing');

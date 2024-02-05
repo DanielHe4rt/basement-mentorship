@@ -1,12 +1,12 @@
 @props([
-    'tasks',
-    'userTasks'
+    'modules',
+    'userModules'
 ])
 
 <h1>Task List</h1>
 <p>Here's the mentoring roadmap.</p>
 
-@foreach($tasks as $task)
+@foreach($modules as $module)
 
     <div class="card mb-3">
         <div class="row g-0">
@@ -16,19 +16,19 @@
             </div>
             <div class="col">
                 <div class="card-body">
-                    <h5 class="card-title">#{{ $task->id }} - {{ $task->title }}</h5>
+                    <h5 class="card-title">#{{ $module->id }} - {{ $module->name }}</h5>
                     <p class="card-text">
-                        Nessa etapa você vai ter que escrever um resumo sobre uma tecnologia bem básica.
+                        {{ $module->description }}
                     </p>
 
                     <div class="row">
                         <div class="col">
                             <p class="card-text">
                                 <small class="text-body-secondary">
-                                    <i class="fa-solid fa-calendar"></i>: {{ $task->created_at->diffForHumans() }}
+                                    <i class="fa-solid fa-calendar"></i>: {{ $module->created_at->diffForHumans() }}
                                 </small>
                                 <small class="text-body-secondary">
-                                    <i class="fa-solid fa-user"></i>: 10
+                                    <i class="fa-solid fa-user"></i>: {{ $module->users()->count() }}
                                 </small>
                                 <small class="text-body-secondary">
                                     <i class="fa-solid fa-user-check"></i>: 2
@@ -36,17 +36,11 @@
                             </p>
                         </div>
                         <div class="col text-right">
-                            @if($userTask = $userTasks->find($task))
-
-                                @if($userTask->status == 'completed')
-                                    <a href="#" class="btn btn-success">Task Completed!</a>
-                                @else
-                                    <a href="{{ route('tasks.show', ['taskProgress' => $userTask, 'module' => $task->module_id]) }}"
-                                       class="btn btn-primary">View Task</a>
-                                @endif
-
+                            @if($userModule = $userModules->find($module))
+                                <a href="{{ route('modules.show', ['module' => $module]) }}"
+                                   class="btn btn-primary">View Module</a>
                             @else
-                                <form method="POST" action="{{ route('tasks.init', ['task' => $task->id, 'module' => $task->module_id]) }}">
+                                <form method="POST" action="{{ route('module.init', ['module' => $module]) }}">
                                     @csrf
                                     <button type="submit" class="btn btn-info">Start Task</button>
                                 </form>

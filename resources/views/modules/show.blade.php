@@ -5,7 +5,7 @@
     @auth
         {{ auth()->user()->github_username }}
 
-        <x-module-list :modules="$modules" :userModules="$userModules"/>
+        <x-task-list :tasks="$tasks" :userTasks="$userTasks"/>
     @endauth
 
 @endsection

@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Task\Progress;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -35,6 +36,16 @@ class User extends Authenticatable
     public function tasks(): HasMany
     {
         return $this->hasMany(Progress::class, 'task_id');
+    }
+
+    public function modules(): BelongsToMany
+    {
+        return $this->belongsToMany(
+            Module::class,
+            'users_modules',
+            'user_id',
+            'module_id',
+        );
     }
 
 }

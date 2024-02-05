@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Module;
+use App\Models\Task\Task;
+use App\Models\Task\Todo;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -12,11 +15,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        $module =  Module::factory()
+            ->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        $tasks = Task::factory()->count(3)->create(['module_id' => $module->id]);
+
+        $tasks->each(fn (Task $task) => Todo::factory()->create(['task_id' => $task->id]));
     }
 }

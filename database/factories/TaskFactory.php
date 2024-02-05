@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Module;
 use App\Models\Task\Task;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -12,6 +13,7 @@ class TaskFactory extends Factory
     public function definition(): array
     {
         return [
+            'module_id' => Module::factory(),
             'title' => $this->faker->sentence(),
             'thumbnail_url' => $this->faker->imageUrl(),
             'description' => $this->faker->text(),
