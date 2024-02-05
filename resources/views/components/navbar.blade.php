@@ -38,9 +38,7 @@
             @endauth
 
             @guest()
-
                 <form class="d-flex">
-
                     <a href="{{ route('auth.redirect', ['provider' => 'github']) }}"
                        class="btn btn-secondary my-2 my-sm-0" type="submit">Sign In</a>
                 </form>

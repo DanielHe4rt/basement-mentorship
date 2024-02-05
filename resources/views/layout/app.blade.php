@@ -8,6 +8,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://bootswatch.com/5/zephyr/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css">
     @vite(['resources/js/app.js'])
 </head>
 <body>
@@ -15,7 +16,10 @@
     <div class="container">
     @yield('content')
 
-        @yield('script', '')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    @yield('script', '')
     </div>
 </body>
 </html>
