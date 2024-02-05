@@ -8,11 +8,6 @@ class DashboardController extends Controller
 {
     public function getDashboard()
     {
-        $taskList = Module::query()->paginate();
-
-        return view('welcome', [
-            'modules' => $taskList,
-            'userModules' => auth()->user()->modules
-        ]);
+        return view('welcome');
     }
 }

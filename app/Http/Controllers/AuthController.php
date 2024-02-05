@@ -45,6 +45,6 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        return response()->redirectToRoute('landing');
+        return response()->redirectToRoute('module.index');
     }
 }

@@ -24,14 +24,18 @@ Route::get('/', [DashboardController::class, 'getDashboard'])
 Route::get('/oauth/{provider}/redirect', [AuthController::class, 'getRedirect'])->name('auth.redirect');
 Route::get('/oauth/{provider}/callback', [AuthController::class, 'getAuthenticate'])->name('auth.store');
 
-Route::prefix('/modules')->group(function () {
-    Route::post('/{module}/init', [ModulesController::class, 'postInitModule'])->name('module.init');
-    Route::prefix('/{module}')->group(function () {
-        Route::get('/', [ModulesController::class, 'getModule'])->name('modules.show');
-        Route::post('/tasks/{task}/init', [TasksController::class, 'postInitTask'])->name('tasks.init');
-        Route::post('/tasks/{progress}/{action}', [TasksController::class, 'postTaskAction'])->name('tasks.action');
-        Route::get('/tasks/{taskProgress}', [TasksController::class, 'getTask'])->name('tasks.show');
+
+Route::prefix('/modules')
+    ->middleware('auth')
+    ->group(function () {
+        Route::get('/', [ModulesController::class, 'getModules'])->name('module.index');
+        Route::post('/{module}/init', [ModulesController::class, 'postInitModule'])->name('module.init');
+        Route::prefix('/{module}')->group(function () {
+            Route::get('/', [ModulesController::class, 'getModule'])->name('modules.show');
+            Route::post('/tasks/{task}/init', [TasksController::class, 'postInitTask'])->name('tasks.init');
+            Route::post('/tasks/{progress}/{action}', [TasksController::class, 'postTaskAction'])->name('tasks.action');
+            Route::get('/tasks/{taskProgress}', [TasksController::class, 'getTask'])->name('tasks.show');
+        });
     });
-});
 
 

@@ -9,6 +9,17 @@ use Illuminate\Http\RedirectResponse;
 
 class ModulesController extends Controller
 {
+    public function getModules()
+    {
+        $modules = Module::query()->paginate();
+
+        return view('modules.index', [
+            'modules' => $modules,
+            'userModules' => auth()->user()->modules
+        ]);
+
+    }
+
     public function getModule(Module $module)
     {
         $taskList = $module->tasks()->get();
