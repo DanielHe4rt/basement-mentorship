@@ -66,24 +66,24 @@
             <p class="lead">Acompanhe o impacto das nossas mentorias através das seguintes métricas:</p>
             <div class="row mt-4">
                 <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body">
+                    <div class="card h-100">
+                        <div class="card-body d-flex flex-column justify-content-center">
                             <h5 class="card-title"><i class="fas fa-users"></i> Alunos</h5>
                             <p class="card-text">Quantidade de alunos: 100</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body">
+                    <div class="card h-100">
+                        <div class="card-body d-flex flex-column justify-content-center">
                             <h5 class="card-title"><i class="fas fa-check-circle"></i> Mentorias Realizadas</h5>
                             <p class="card-text">Quantidade de mentorias realizadas: 500</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body">
+                    <div class="card h-100">
+                        <div class="card-body d-flex flex-column justify-content-center">
                             <h5 class="card-title"><i class="fas fa-spinner"></i> Mentorias em Andamento</h5>
                             <p class="card-text">Quantidade de mentorias em andamento: 50</p>
                         </div>
@@ -161,7 +161,8 @@
             mode: 'carousel',
             controls: false,
             nav: false,
-            autoplay: true
+            autoplay: true,
+            autoplayButtonOutput: false,
         });
     </script>
 @endsection
