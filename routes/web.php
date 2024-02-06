@@ -27,9 +27,16 @@ Route::post('/oauth/logout', [AuthController::class, 'postLogout'])
     ->middleware('auth')
     ->name('auth.logout');
 
+Route::prefix('onboarding')
+    ->middleware('auth')
+    ->group(function () {
+        Route::get('/', [DashboardController::class, 'getOnboarding'])->name('onboarding');
+        Route::post('/', [DashboardController::class, 'postOnboarding'])->name('onboarding.store');
+    });
+
 
 Route::prefix('/modules')
-    ->middleware('auth')
+    ->middleware(['auth', 'onboarded'])
     ->group(function () {
         Route::get('/', [ModulesController::class, 'getModules'])->name('module.index');
         Route::post('/{module}/init', [ModulesController::class, 'postInitModule'])->name('module.init');

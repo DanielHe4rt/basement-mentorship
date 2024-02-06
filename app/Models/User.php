@@ -7,6 +7,7 @@ use App\Models\Task\Progress;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -25,7 +26,12 @@ class User extends Authenticatable
         'github_id',
         'github_username',
         'description',
-        'email'
+        'email',
+        'onboarded',
+    ];
+
+    protected $casts = [
+        'onboarded' => 'boolean'
     ];
 
     public function tokens(): HasMany
@@ -36,6 +42,11 @@ class User extends Authenticatable
     public function tasks(): HasMany
     {
         return $this->hasMany(Progress::class, 'user_id');
+    }
+
+    public function details(): HasOne
+    {
+        return $this->hasOne(Detail::class);
     }
 
     public function modules(): BelongsToMany

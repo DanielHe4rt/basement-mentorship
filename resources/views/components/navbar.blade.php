@@ -17,7 +17,6 @@
                         <a class="nav-link {{ request()->routeIs('module.index') ? 'active' : '' }}" href="{{ route('module.index') }}">Mentorias</a>
                     </li>
                 @endauth
-
             </ul>
             @auth()
 
