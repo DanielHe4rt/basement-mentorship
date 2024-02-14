@@ -14,6 +14,9 @@
                 </li>
                 @auth()
                     <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}" href="{{ route('dashboard') }}">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('module.index') ? 'active' : '' }}" href="{{ route('module.index') }}">Mentorias</a>
                     </li>
                 @endauth
