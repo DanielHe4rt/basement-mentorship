@@ -59,4 +59,10 @@ class User extends Authenticatable
         );
     }
 
+    public function onboard(array $payload): void
+    {
+        $this->details()->updateOrCreate($payload);
+        $this->update(['onboarded'=> true]);
+    }
+
 }

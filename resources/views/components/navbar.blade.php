@@ -26,8 +26,11 @@
                             <img src="{{ 'https://github.com/' . auth()->user()->github_username . '.png' }}"
                                  alt="{{ auth()->user()->name }}" class="rounded-circle" width="40" height="40">
                         </li>
-                        <li>
-                            <span class="nav-link">{{ auth()->user()->name }}</span>
+                        <li class="px-2">
+                            <div class="nav-link d-flex flex-column p-0">
+                                <span>{{ auth()->user()->name }}</span>
+                                <span class="small">{{ '@' . auth()->user()->github_username }}</span>
+                            </div>
                         </li>
                         <li>
                             <form action="{{ route('auth.logout') }}" method="post">

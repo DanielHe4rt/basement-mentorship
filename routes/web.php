@@ -29,7 +29,7 @@ Route::post('/oauth/logout', [AuthController::class, 'postLogout'])
     ->name('auth.logout');
 
 Route::get('/dashboard', [DashboardController::class, 'getDashboard'])
-    ->middleware('auth')
+    ->middleware(['auth', 'onboarded'])
     ->name('dashboard');
 
 Route::prefix('onboarding')

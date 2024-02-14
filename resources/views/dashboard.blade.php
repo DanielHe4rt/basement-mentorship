@@ -54,7 +54,7 @@
                             Mentorias concluidas
                         </h5>
                         <p>Tarefas submetidas e aprovadas:</p>
-                        <p class="btn btn-success text-white">1</p>
+                        <a class="btn btn-success text-white">1</a>
                     </div>
                 </div>
             </div>
@@ -63,10 +63,10 @@
                     <div class="card-body text-center">
                         <h5 class="card-title">
                             <i class="fas fa-spinner text-info"></i>
-                            Mentorias concluidas
+                            Mentorias em Andamento
                         </h5>
-                        <p>Tarefas submetidas e aprovadas:</p>
-                        <p class="btn btn-info text-white">1</p>
+                        <p>Tá devendo tarefinha é? Se liga quantas:</p>
+                        <a class="btn btn-info text-white">1</a>
                     </div>
                 </div>
             </div>
@@ -74,10 +74,10 @@
                 <div class="card bg-light text-center">
                     <div class="card-body" >
                         <h5 class="card-title ">
-                            <i class="fas fa-spinner text-info"></i>
+                            <i class="fas fa-tasks text-info"></i>
                             Tarefa ativa
                         </h5>
-                        <p>Continue sua última tarefa:</p>
+                        <p>Clique aqui para acessar sua última tarefa:</p>
                         <a href="{{ '' }}" class="btn btn-primary">Ir para Tarefa</a>
                     </div>
                 </div>

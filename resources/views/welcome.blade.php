@@ -1,7 +1,6 @@
 @extends('layout.app')
 
 @section('content')
-
     <section class="hero bg-primary text-white py-5 mt-5">
         <div class="container">
             <div class="row">

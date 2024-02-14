@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreOnboardRequest;
+use App\Models\User;
 use Illuminate\View\View;
 
 class OnboardingController extends Controller
@@ -16,8 +17,10 @@ class OnboardingController extends Controller
 
     public function postOnboarding(StoreOnboardRequest $request)
     {
+        /** @var User $user */
         $user = request()->user();
-        $user->details()->create($request->validated());
+
+        $user->onboard($request->validated());
 
         return redirect()->route('dashboard');
     }
