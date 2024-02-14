@@ -12,20 +12,25 @@ use Illuminate\Validation\Rules\Enum;
 class StoreOnboardRequest extends FormRequest
 {
 
-    public function rules()
+    public function rules(): array
     {
-        // array instead pipes
         return [
             'company' => ['nullable', 'string'],
             'role' => ['required',  new Enum(JobRoleEnum::class)],
             'seniority' => ['required', new Enum(SeniorityEnum::class)],
             'based_in' => ['required', new Enum(BasedPlaceEnum::class)],
-            'pronoums' => ['required', new Enum(PronoumEnum::class)],
+            'pronouns' => ['required', new Enum(PronoumEnum::class)],
             'twitter_handle' => ['required', 'string'],
             'devto_handle' => ['required', 'string'],
             'comments' => ['nullable', 'string'],
             'is_employed' => ['required', 'boolean'],
             'switching_career' => ['required', 'boolean']
         ];
+    }
+
+    public function prepareForValidation(): void
+    {
+        $this->merge(['is_employed' => $this->has('is_employed')]);
+        $this->merge(['switching_career' => $this->has('switching_career')]);
     }
 }

@@ -4,26 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreOnboardRequest;
 use App\Models\Module;
+use Illuminate\View\View;
 
 class DashboardController extends Controller
 {
-    public function getDashboard()
+    public function getDashboard(): View
     {
-        return view('welcome');
-    }
-
-    public function getOnboarding()
-    {
-        return view('onboarding', [
+        return view('dashboard', [
             'user' => request()->user(),
+            'details' => request()->user()->details,
         ]);
-    }
-
-    public function postOnboarding(StoreOnboardRequest $request)
-    {
-        $user = request()->user();
-        $user->details()->create($request->validated());
-
-        return redirect()->route('dashboard');
     }
 }

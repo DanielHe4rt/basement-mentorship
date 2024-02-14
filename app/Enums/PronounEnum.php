@@ -2,7 +2,7 @@
 
 namespace App\Enums;
 
-enum PronoumEnum: string
+enum PronounEnum: string
 {
     case HE_HIM = 'he/him';
     case SHE_HER = 'she/her';

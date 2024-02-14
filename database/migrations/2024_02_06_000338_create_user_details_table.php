@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('role')->nullable(); // php enum
             $table->string('seniority')->nullable(); // php enum
             $table->string('based_in')->nullable(); // php enum
-            $table->string('pronoums')->nullable(); // php enum
+            $table->string('pronouns')->nullable(); // php enum
             $table->boolean('switching_career')->nullable();
             $table->string('twitter_handle')->nullable();
             $table->string('devto_handle')->nullable();

@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Enums\PronounEnum;
+use App\Enums\SeniorityEnum;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -15,7 +17,7 @@ class Detail extends Model
         'role',
         'seniority',
         'based_in',
-        'pronoums',
+        'pronouns',
         'twitter_handle',
         'devto_handle',
         'comments',
@@ -26,6 +28,8 @@ class Detail extends Model
     protected $casts = [
         'is_employed' => 'boolean',
         'switching_career' => 'boolean',
+        'pronouns' => PronounEnum::class,
+        'seniority' => SeniorityEnum::class,
     ];
 
     public function user(): BelongsTo

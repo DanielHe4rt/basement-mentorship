@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 
 class AuthController extends Controller
 {
-    public function getRedirect(string $provider)
+    public function getRedirect(string $provider): RedirectResponse|JsonResponse
     {
         if ($provider !== "github") {
             return response()->json(['sai daqui' => 'caraio']);
@@ -19,7 +21,7 @@ class AuthController extends Controller
             ->redirect();
     }
 
-    public function getAuthenticate(string $provider)
+    public function getAuthenticate(string $provider): RedirectResponse|JsonResponse
     {
         if ($provider !== "github") {
             return response()->json(['sai daqui' => 'caraio']);
@@ -48,7 +50,7 @@ class AuthController extends Controller
         return response()->redirectToRoute('module.index');
     }
 
-    public function postLogout()
+    public function postLogout(): RedirectResponse
     {
         auth()->logout();
 
