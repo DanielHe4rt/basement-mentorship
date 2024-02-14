@@ -6,10 +6,11 @@ use App\Models\Module;
 use App\Models\Task\Progress;
 use App\Models\Task\Task;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 class ModulesController extends Controller
 {
-    public function getModules()
+    public function getModules(): View
     {
         $modules = Module::query()->paginate();
 
@@ -20,7 +21,7 @@ class ModulesController extends Controller
 
     }
 
-    public function getModule(Module $module)
+    public function getModule(Module $module): View
     {
         $taskList = $module->tasks()->get();
         $userTasks = request()->user()->tasks;

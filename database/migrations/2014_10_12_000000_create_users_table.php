@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('github_username');
             $table->string('description');
             $table->string('email')->unique();
+            $table->string('onboarded')->default(false);
             $table->timestamps();
         });
     }

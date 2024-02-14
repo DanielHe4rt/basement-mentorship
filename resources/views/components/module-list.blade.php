@@ -12,7 +12,7 @@
         <div class="row g-0">
             <div class="col-2">
                 <img src="{{ 'https://github.com/danielhe4rt.png' }}" width="200" class="img-fluid rounded-start"
-                     alt="...">
+                     alt="">
             </div>
             <div class="col">
                 <div class="card-body">
