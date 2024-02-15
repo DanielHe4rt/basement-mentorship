@@ -1,5 +1,12 @@
 @extends('layout.app')
 
+@section('breadcrumb')
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Inicio</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('module.index') }}">Mentorias</a></li>
+        <li class="breadcrumb-item active">{{'#' . $module->id  }} Mentoria</li>
+    </ol>
+@endsection
 
 @section('content')
 

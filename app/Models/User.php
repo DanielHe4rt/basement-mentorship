@@ -34,6 +34,11 @@ class User extends Authenticatable
         'onboarded' => 'boolean'
     ];
 
+    public function getImageUrlAttribute(): string
+    {
+        return "https://avatars.githubusercontent.com/u/{$this->github_id}";
+    }
+
     public function tokens(): HasMany
     {
         return $this->hasMany(Token::class);

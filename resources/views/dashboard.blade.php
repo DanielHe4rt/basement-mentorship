@@ -1,5 +1,9 @@
 @extends('layout.app')
 
+@section('breadcrumb')
+
+@endsection
+
 @section('content')
 
     <div class="container mt-5">
@@ -7,10 +11,9 @@
         <div class="col">
             <div class="card">
                 <div class="row g-0">
-                    <div class="col">
-                        <img src="{{ 'https://github.com/danielhe4rt.png' }}" class="img-fluid rounded-start"
-                             alt="...">
-                    </div>
+
+                    <img src="{{ $user->image_url }}" class="img-fluid col object-fit-cover"
+                         alt="...">
                     <div class="col-10">
                         <div class="card-body">
                             <h5 class="card-title">{{ $user->name }} <small>({{ $user->github_username }})</small></h5>
@@ -72,7 +75,7 @@
             </div>
             <div class="col-md-4">
                 <div class="card bg-light text-center">
-                    <div class="card-body" >
+                    <div class="card-body">
                         <h5 class="card-title ">
                             <i class="fas fa-tasks text-info"></i>
                             Tarefa ativa

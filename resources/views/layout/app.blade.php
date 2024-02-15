@@ -12,8 +12,11 @@
     @vite(['resources/js/app.js'])
 </head>
 <body>
-    <x-navbar/>
-    <div class="container">
+<x-navbar/>
+<div class="container">
+    <div class="mt-3">
+        @yield("breadcrumb", '')
+    </div>
     @yield('content')
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
