@@ -4,13 +4,15 @@
 ])
 
 <h1>Trilhas de Mentorias</h1>
-<p>Selecione a que tiver mais com </p>
+<p>
+    Se inscreva na que mais te interessar e comece a aprender com a comunidade.
+</p>
 
 <div class="row">
     @foreach($modules as $module)
         <div class="col-12 col-md-3">
             <div class="card mb-3">
-                <img src="https://github.com/danielhe4rt.png" class="card-img-top" alt="...">
+                <img src="{{ $module->thumbnail_url }}" class="card-img-top object-fit-cover" alt="...">
                 <div class="card-body">
                     <div class="card-text d-flex justify-content-between flex-row mb-3">
                         <div>

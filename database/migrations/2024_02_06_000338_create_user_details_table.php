@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->string('company')->nullable();
-            $table->string('role')->nullable(); // php enum
-            $table->string('seniority')->nullable(); // php enum
-            $table->string('based_in')->nullable(); // php enum
-            $table->string('pronouns')->nullable(); // php enum
+            $table->string('role')->nullable();
+            $table->string('seniority')->nullable();
+            $table->string('based_in')->nullable();
+            $table->string('pronouns')->nullable();
             $table->boolean('switching_career')->nullable();
             $table->string('twitter_handle')->nullable();
             $table->string('devto_handle')->nullable();

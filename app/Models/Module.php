@@ -14,7 +14,8 @@ class Module extends Model
 
     protected $fillable = [
         'name',
-        'description'
+        'description',
+        'thumbnail_url'
     ];
 
     public function tasks(): HasMany

@@ -10,11 +10,9 @@
 
 @section('content')
 
-    <h1 class="mt-2">Tarefas do módulo</h1>
-    <p>Here's the mentoring roadmap.</p>
     <div class="card bg-light mb-3">
         <div class="row">
-            <img src="https://github.com/danielhe4rt.png" class="col-3 col-md-2 img-fluid object-fit-cover" alt="...">
+            <img src="{{ $module->thumbnail_url }}" class="col-3 col-md-2 img-fluid object-fit-cover" alt="...">
             <div class="card-body col-9 col-md-10">
                 <div class="card-text">
                     <div>

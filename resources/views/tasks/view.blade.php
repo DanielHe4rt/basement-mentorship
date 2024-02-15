@@ -4,7 +4,8 @@
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Inicio</a></li>
         <li class="breadcrumb-item"><a href="{{ route('module.index') }}">Mentorias</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('modules.show', $module) }}">{{'#' . $module->id  }} Mentoria</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('modules.show', $module) }}">{{'#' . $module->id  }} Mentoria</a>
+        </li>
         <li class="breadcrumb-item active">{{'#' . $module->id  }} Tarefa</li>
     </ol>
 @endsection
@@ -21,18 +22,17 @@
         </div>
     @endif
 
-    <h1>Your Task</h1>
-
     <div class="card mb-3">
         <div class="row g-0">
 
-            <img src="{{ 'https://github.com/danielhe4rt.png' }}" class="img-fluid col-2 object-fit-cover rounded-start" alt="...">
+            <img src="{{ $taskProgress->task->thumbnail_url }}" class="img-fluid col-2 object-fit-cover rounded-start"
+                 alt="...">
 
             <div class="col">
                 <div class="card-body">
                     <h5 class="card-title">{{ $taskProgress->task->title }}</h5>
                     <p class="card-text">
-                        {{ $taskProgress->task->title }}
+                        {{ $taskProgress->task->description }}
                     </p>
 
                     <div class="row">
@@ -60,24 +60,31 @@
         <div class="row">
             <div class="col-12 col-md-6">
                 <div class="alert alert-warning h-100">
-                <h3>Task Checklist</h3>
-                @foreach($taskProgress->task->todos as $todo)
-                    <div class="form-check">
-                        <input class="form-check-input" name="todos[{{$todo->id}}]" type="checkbox"  id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            {{ $todo->description }}
-                        </label>
+                    <div class="d-flex flex-column">
+                        <h3>Lista de Tarefas</h3>
+                        <p>Não são necessários, porém marcam aquele progresso.</p>
                     </div>
-                @endforeach
+
+
+                    @foreach($taskProgress->task->todos as $todo)
+                        <div class="form-check">
+                            <input class="form-check-input" name="todos[{{$todo->id}}]" type="checkbox"
+                                   id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                {{ $todo->description }}
+                            </label>
+                        </div>
+                    @endforeach
                 </div>
             </div>
             <div class="col-12 col-md-6">
                 <div class="alert alert-info h-100">
-                    <h4>Tips</h4>
+                    <h4>Dicas e Utilidades</h4>
+                    <p>Aquela lista bacana pra te auxiliar na sua tarefa.</p>
                     <ul>
-                    @foreach($taskProgress->task->tips as $tip)
-                        <li>{{ $tip }}</li>
-                    @endforeach
+                        @foreach($taskProgress->task->tips as $tip)
+                            <li>{{ $tip }}</li>
+                        @endforeach
                     </ul>
                 </div>
             </div>

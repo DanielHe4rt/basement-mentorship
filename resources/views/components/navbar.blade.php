@@ -30,15 +30,14 @@
                                  alt="{{ auth()->user()->name }}" class="rounded-circle" width="40" height="40">
                         </li>
                         <li class="px-2">
-                            <div class="nav-link d-flex flex-column p-0">
+                            <div class="nav-link">
                                 <span>{{ auth()->user()->name }}</span>
-                                <span class="small">{{ '@' . auth()->user()->github_username }}</span>
                             </div>
                         </li>
                         <li>
                             <form action="{{ route('auth.logout') }}" method="post">
                                 @csrf
-                                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Sign Out</button>
+                                <button class="nav-link" type="submit">Sign Out</button>
                             </form>
                         </li>
                     </ul>
@@ -46,10 +45,16 @@
             @endauth
 
             @guest()
-                <form class="d-flex">
-                    <a href="{{ route('auth.redirect', ['provider' => 'github']) }}"
-                       class="btn btn-secondary my-2 my-sm-0" type="submit">Sign In</a>
-                </form>
+                <div class="d-flex ">
+                    <ul class="navbar-nav me-auto">
+                        <div class="nav-link">
+                            <form>
+                                <a href="{{ route('auth.redirect', ['provider' => 'github']) }}"
+                                   type="submit" class="btn btn-primary">Sign In</a>
+                            </form>
+                        </div>
+                    </ul>
+                </div>
             @endguest
         </div>
     </div>

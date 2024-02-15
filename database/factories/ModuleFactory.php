@@ -13,7 +13,8 @@ class ModuleFactory extends Factory
     {
         return [
             'name' => $this->faker->sentence(),
-            'description' => $this->faker->text()
+            'description' => $this->faker->text(),
+            'thumbnail_url' => $this->faker->imageUrl()
         ];
     }
 }

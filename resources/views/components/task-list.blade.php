@@ -10,7 +10,7 @@
             <div class="card mb-3">
                 <div class="row g-0">
 
-                    <img src="{{ 'https://github.com/danielhe4rt.png' }}"
+                    <img src="{{ $task->thumbnail_url }}"
                          class="col-3 img-fluid object-fit-cover rounded-start"
                          alt="...">
 
@@ -29,7 +29,7 @@
                             </p>
                             <h5 class="card-title">#{{ $task->id }} - {{ $task->title }}</h5>
                             <p class="card-text">
-                                Nessa etapa você vai ter que escrever um resumo sobre uma tecnologia bem básica.
+                                {{ $task->description }}
                             </p>
 
                             <div class="row">
@@ -45,7 +45,7 @@
                                         <form method="POST"
                                               action="{{ route('tasks.init', ['task' => $task->id, 'module' => $task->module_id]) }}">
                                             @csrf
-                                            <button type="button" class="btn btn-dark d-grid">Tarefa Trancada</button>
+                                            <button type="submit" class="btn btn-dark d-grid">Iniciar Tarefa</button>
                                         </form>
                                     @endif
                                 </div>

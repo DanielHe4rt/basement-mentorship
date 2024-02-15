@@ -4,12 +4,17 @@
     <section class="hero bg-primary text-white py-5 mt-5">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <img src="{{ asset('assets/landing-hero.svg') }}" alt="Hero Image" class="img-fluid rounded-circle mt-3">
                 </div>
-                <div class="col-md-6">
-                    <h1 class="display-5">Mentorias para Pessoas Desenvolvedoras</h1>
+                <div class="col-md-8">
+                    <h1 class="display-5">
+                        Mentorias para Pessoas Desenvolvedoras
+                    </h1>
                     <p class="lead">Vou te ajudar a revisar os fundamentos necessários da programação pra você não vacilar nas entrevistas de emprego :D</p>
+                    <marquee behavior="" direction="">
+                        é sério confia no primo
+                    </marquee>
                 </div>
             </div>
         </div>

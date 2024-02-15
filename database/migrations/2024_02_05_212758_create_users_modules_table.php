@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('users_modules', function (Blueprint $table) {
             $table->foreignId('module_id')->constrained('modules');
             $table->foreignId('user_id')->constrained('users');
+            $table->string('status')->default('onhold');
             $table->timestamps();
         });
     }

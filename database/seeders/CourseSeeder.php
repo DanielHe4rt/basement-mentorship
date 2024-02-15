@@ -1,0 +1,72 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\Module;
+use App\Models\Task\Task;
+use App\Models\Task\Todo;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+
+class CourseSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        $mentorings = [
+            [
+                'name' => 'Desenvolvimento para Iniciantes',
+                'description' => 'A trilha é feita para pessoas que não tem o conhecimento dos fundamentos da internet.',
+                'thumbnail_url' => 'https://i.imgur.com/Zb2du2E.jpeg',
+                'tasks' => [
+                    [
+                        'title' => 'Redação ENEM Tech',
+                        'thumbnail_url' => 'https://i.imgur.com/uILTzpv.jpeg',
+                        'description' => 'Escreva um texto dissertativo-argumentativo sobre a importância da tecnologia na sociedade.',
+                        'deadline' => now()->addDays(7),
+                        'order' => 1,
+                        'tips' => [
+                            'https://www.w3schools.com/html/',
+                            'https://developer.mozilla.org/pt-BR/docs/Web/HTML'
+                        ]
+                    ],
+                    [
+                        'title' => 'Browsers são FODAS!',
+                        'thumbnail_url' => 'https://i.imgur.com/eAhXBii.jpeg',
+                        'description' => 'Entenda como os navegadores funcionam e como eles interpretam o HTML, CSS e JavaScript.',
+                        'deadline' => now()->addDays(14),
+                        'order' => 2,
+                        'tips' => [
+                            'https://www.w3schools.com/css/',
+                            'https://developer.mozilla.org/pt-BR/docs/Web/CSS'
+                        ]
+                    ],
+                    [
+                        'title' => 'Banco de Dados: uma abordagem pragmática',
+                        'thumbnail_url' => 'https://i.imgur.com/chABRAr.jpeg',
+                        'description' => 'Antes de escolher um banco de dados, entenda as diferenças entre os tipos de bancos de dados.',
+                        'deadline' => now()->addDays(21),
+                        'order' => 3,
+                        'tips' => [
+                            'https://www.w3schools.com/js/',
+                            'https://developer.mozilla.org/pt-BR/docs/Web/JavaScript'
+                        ]
+                    ]
+                ]
+            ]
+        ];
+
+
+        foreach($mentorings as $mentoring) {
+            /** @var Module $module */
+            $tasks = $mentoring['tasks'];
+            unset($mentoring['tasks']);
+
+            $module = Module::query()->create($mentoring);
+            $module->tasks()->createMany($tasks);
+
+        }
+    }
+}

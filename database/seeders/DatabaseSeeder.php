@@ -15,12 +15,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $module = Module::factory()
-            ->create();
-
-        foreach (range(1, 3) as $i) {
-            $task = Task::factory()->create(['module_id' => $module->id, 'order' => $i]);
-            Todo::factory()->create(['task_id' => $task->id]);
-        }
+        $this->call(CourseSeeder::class);
     }
 }
