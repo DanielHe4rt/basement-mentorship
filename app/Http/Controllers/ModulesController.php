@@ -28,7 +28,8 @@ class ModulesController extends Controller
 
         return view('modules.show', [
             'tasks' => $taskList,
-            'userTasks' => $userTasks
+            'userTasks' => $userTasks,
+            'module' => $module
         ]);
     }
 

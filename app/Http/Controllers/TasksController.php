@@ -16,7 +16,8 @@ class TasksController extends Controller
     public function getTask(Module $module, Progress $taskProgress)
     {
         return view('tasks.view', [
-            'taskProgress' => $taskProgress
+            'taskProgress' => $taskProgress,
+            'module' => $module
         ]);
     }
 

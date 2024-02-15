@@ -42,9 +42,6 @@
                                 </small>
                             </p>
                         </div>
-                        <div class="col text-right">
-
-                        </div>
                     </div>
                 </div>
 

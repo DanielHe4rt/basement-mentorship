@@ -3,26 +3,19 @@
     'userTasks'
 ])
 
-<h1>Task List</h1>
-<p>Here's the mentoring roadmap.</p>
 
-@foreach($tasks as $task)
+<div class="row">
+    @foreach($tasks as $task)
+        <div class="col-12 col-md-6">
+            <div class="card mb-3">
+                <div class="row g-0">
 
-    <div class="card mb-3">
-        <div class="row g-0">
-            <div class="col-2">
-                <img src="{{ 'https://github.com/danielhe4rt.png' }}" width="200" class="img-fluid rounded-start"
-                     alt="...">
-            </div>
-            <div class="col">
-                <div class="card-body">
-                    <h5 class="card-title">#{{ $task->id }} - {{ $task->title }}</h5>
-                    <p class="card-text">
-                        Nessa etapa você vai ter que escrever um resumo sobre uma tecnologia bem básica.
-                    </p>
+                    <img src="{{ 'https://github.com/danielhe4rt.png' }}"
+                         class="col-3 img-fluid object-fit-cover rounded-start"
+                         alt="...">
 
-                    <div class="row">
-                        <div class="col">
+                    <div class="col">
+                        <div class="card-body">
                             <p class="card-text">
                                 <small class="text-body-secondary">
                                     <i class="fa-solid fa-calendar"></i>: {{ $task->created_at->diffForHumans() }}
@@ -34,29 +27,34 @@
                                     <i class="fa-solid fa-user-check"></i>: 2
                                 </small>
                             </p>
-                        </div>
-                        <div class="col text-right">
-                            @if($userTask = $userTasks->first(fn ($userTask) => $userTask->task_id == $task->id))
+                            <h5 class="card-title">#{{ $task->id }} - {{ $task->title }}</h5>
+                            <p class="card-text">
+                                Nessa etapa você vai ter que escrever um resumo sobre uma tecnologia bem básica.
+                            </p>
 
-                                @if($userTask->status == 'completed')
-                                    <a href="#" class="btn btn-success">Task Completed!</a>
-                                @else
-                                    <a href="{{ route('tasks.show', ['taskProgress' => $userTask, 'module' => $task->module_id]) }}"
-                                       class="btn btn-primary">View Task</a>
-                                @endif
-
-                            @else
-                                <form method="POST" action="{{ route('tasks.init', ['task' => $task->id, 'module' => $task->module_id]) }}">
-                                    @csrf
-                                    <button type="submit" class="btn btn-info">Start Task</button>
-                                </form>
-                            @endif
+                            <div class="row">
+                                <div class="col-12 col-md-6 text-right mt-2">
+                                    @if($userTask = $userTasks->first(fn ($userTask) => $userTask->task_id == $task->id))
+                                        @if($userTask->status == 'completed')
+                                            <a href="#" class="btn btn-success">Task Completed!</a>
+                                        @else
+                                            <a href="{{ route('tasks.show', ['taskProgress' => $userTask, 'module' => $task->module_id]) }}"
+                                               class="btn btn-primary">Continuar Tarefa</a>
+                                        @endif
+                                    @else
+                                        <form method="POST"
+                                              action="{{ route('tasks.init', ['task' => $task->id, 'module' => $task->module_id]) }}">
+                                            @csrf
+                                            <button type="button" class="btn btn-dark d-grid">Tarefa Trancada</button>
+                                        </form>
+                                    @endif
+                                </div>
+                            </div>
                         </div>
+
                     </div>
                 </div>
-
             </div>
         </div>
-    </div>
-
-@endforeach
+    @endforeach
+</div>
