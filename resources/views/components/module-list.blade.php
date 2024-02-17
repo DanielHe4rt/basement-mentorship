@@ -35,14 +35,22 @@
 
                     <div>
                         @if($userModule = $userModules->find($module))
-                            <a href="{{ route('modules.show', ['module' => $module]) }}"
-                               class="btn btn-primary d-grid">
-                                Ver Trilha
-                            </a>
+
+                            @if($userModule->pivot->status === \App\Enums\ModuleAttendanceEnum::ACCEPTED)
+                                <a href="{{ route('modules.show', ['module' => $module]) }}"
+                                   class="btn btn-success d-grid">
+                                    Continuar Trilha
+                                </a>
+                            @else
+                                <a href="{{ route('modules.show', ['module' => $module]) }}"
+                                   class="btn btn-secondary d-grid">
+                                    Aguardando Aprovação
+                                </a>
+                            @endif
                         @else
                             <form method="POST" action="{{ route('module.init', ['module' => $module]) }}">
                                 @csrf
-                                <button type="submit" class="btn btn-info d-grid">Iniciar Trilha</button>
+                                <button type="submit" class="btn btn-info d-grid w-100">Inscrever na Trilha</button>
                             </form>
                         @endif
                     </div>

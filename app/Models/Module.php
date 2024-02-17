@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Task\Task;
+use App\Pivots\ModuleAttendancePivot;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -30,6 +31,8 @@ class Module extends Model
             'users_modules',
             'module_id',
             'user_id'
-        );
+        )->using(ModuleAttendancePivot::class)
+            ->withPivot('status')
+            ->withTimestamps();
     }
 }

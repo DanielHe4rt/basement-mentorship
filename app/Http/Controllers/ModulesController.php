@@ -18,7 +18,6 @@ class ModulesController extends Controller
             'modules' => $modules,
             'userModules' => auth()->user()->modules
         ]);
-
     }
 
     public function getModule(Module $module): View

@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Task\Progress;
+use App\Pivots\ModuleAttendancePivot;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -61,7 +62,9 @@ class User extends Authenticatable
             'users_modules',
             'user_id',
             'module_id',
-        );
+        )->using(ModuleAttendancePivot::class)
+            ->withPivot('status')
+            ->withTimestamps();
     }
 
     public function onboard(array $payload): void
