@@ -2,23 +2,21 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\Task\TaskProgressStatusEnum;
 use Illuminate\Foundation\Http\FormRequest;
 
 class TaskRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
     public function authorize(): bool
     {
-        return true;
+        $enabledStatuses = [
+            TaskProgressStatusEnum::Started,
+            TaskProgressStatusEnum::Need_Improvements
+        ];
+
+        return in_array($this->progress->status, $enabledStatuses);
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
-     */
     public function rules(): array
     {
         return [

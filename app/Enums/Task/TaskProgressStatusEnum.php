@@ -7,6 +7,7 @@ enum TaskProgressStatusEnum: string
     case Started = 'started';
 
     case Submitted = 'submitted';
+    case Need_Improvements = 'enhancements-needed';
 
     case Completed = 'completed';
 
@@ -16,6 +17,7 @@ enum TaskProgressStatusEnum: string
             self::Started => "Não Enviado",
             self::Submitted => "Aguardando Revisão",
             self::Completed => "Atividade Aceita",
+            self::Need_Improvements => 'Aguardando melhorias',
         };
     }
 
@@ -24,6 +26,7 @@ enum TaskProgressStatusEnum: string
         return match ($this) {
             self::Started => 'secondary',
             self::Submitted => 'warning',
+            self::Need_Improvements => 'info',
             self::Completed => 'success',
         };
     }

@@ -60,7 +60,7 @@
             <div class="col-12 col-md-6">
                 <div class="alert alert-warning h-100">
                     <div class="d-flex flex-column">
-                        <h3>Lista de Tarefas</h3>
+                        <h3>Lista de Afazeres</h3>
                         <p>Não são necessários, porém marcam aquele progresso.</p>
                     </div>
                     @foreach($taskProgress->task->todos as $todo)
@@ -88,13 +88,13 @@
         </div>
 
         <hr>
-        <h3>Task Resolution</h3>
+        <h3>Resolução da Tarefa</h3>
         <ul class="nav nav-tabs" role="tablist">
             <li class="nav-item" role="presentation">
                 <a class="nav-link active" data-bs-toggle="tab" href="#edit" aria-selected="true" role="tab">Edição</a>
             </li>
             <li class="nav-item" role="presentation">
-                <a class="nav-link" data-bs-toggle="tab" href="#taskPreview" id="previewTrigger" aria-selected="false"
+                <a class="nav-link" data-bs-toggle="tab" href="#taskPreviewEl" id="previewTrigger" aria-selected="false"
                    tabindex="-1" role="tab">Visualização</a>
             </li>
         </ul>
@@ -103,8 +103,12 @@
                 <label for="codeMirror"></label>
                 <textarea name="content" id="codeMirror">{{ $taskProgress->content }}</textarea>
             </div>
-            <div class="tab-pane fade" id="taskPreview" role="tabpanel">
+            <div class="tab-pane fade"  role="tabpanel" id="taskPreviewEl">
+                <div class="card">
+                    <div class="card-body" id="taskPreview">
 
+                    </div>
+                </div>
             </div>
         </div>
 
