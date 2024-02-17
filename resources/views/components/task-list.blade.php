@@ -21,10 +21,10 @@
                                     <i class="fa-solid fa-calendar"></i>: {{ $task->created_at->diffForHumans() }}
                                 </small>
                                 <small class="text-body-secondary">
-                                    <i class="fa-solid fa-user"></i>: 10
+                                    <i class="fa-solid fa-user"></i>: {{ $task->progress()->count() }}
                                 </small>
                                 <small class="text-body-secondary">
-                                    <i class="fa-solid fa-user-check"></i>: 2
+                                    <i class="fa-solid fa-user-check"></i>: {{ $task->progress()->where('status' , 'completed')->count() }}
                                 </small>
                             </p>
                             <h5 class="card-title">#{{ $task->id }} - {{ $task->title }}</h5>

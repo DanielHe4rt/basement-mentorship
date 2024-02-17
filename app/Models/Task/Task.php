@@ -31,6 +31,11 @@ class Task extends Model
         return $this->hasMany(Todo::class);
     }
 
+    public function progress(): HasMany
+    {
+        return $this->hasMany(Progress::class);
+    }
+
     protected static function newFactory(): TaskFactory
     {
         return TaskFactory::new();

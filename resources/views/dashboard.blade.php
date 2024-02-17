@@ -11,8 +11,7 @@
         <div class="col">
             <div class="card">
                 <div class="row g-0">
-
-                    <img src="{{ $user->image_url }}" class="img-fluid col object-fit-cover"
+                    <img src="{{ $user->image_url }}" class="img-fluid col-2 object-fit-cover"
                          alt="...">
                     <div class="col-10">
                         <div class="card-body">
