@@ -22,7 +22,7 @@ return new class extends Migration
             $table->boolean('switching_career')->nullable();
             $table->string('twitter_handle')->nullable();
             $table->string('devto_handle')->nullable();
-            $table->string('comments')->nullable();
+            $table->text('comments')->nullable();
             $table->boolean('is_employed')->nullable();
             $table->timestamps();
         });
