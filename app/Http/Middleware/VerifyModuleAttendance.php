@@ -23,8 +23,8 @@ class VerifyModuleAttendance
             return $this->redirectWithErrorMessage('Boa pergunta');
         }
 
-        return match($userModule->pivot->status) {
-            ModuleAttendanceEnum::ACCEPTED => $next($request),
+        return match ($userModule->pivot->status) {
+            ModuleAttendanceEnum::ACCEPTED, ModuleAttendanceEnum::FINISHED => $next($request),
             ModuleAttendanceEnum::ON_HOLD => $this->redirectWithErrorMessage('Caraio')
         };
 

@@ -32,7 +32,7 @@
                 <div class="card mb-3">
                     <div class="row g-0">
                         <div class="col-4">
-                            <img src="{{ 'https://github.com/danielhe4rt.png' }}" width="200"
+                            <img src="{{  $user->image_url }}" width="200"
                                  class="img-fluid rounded-start"
                                  alt="...">
                         </div>

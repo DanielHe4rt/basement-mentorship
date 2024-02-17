@@ -20,7 +20,7 @@
                                 <i class="fa-solid fa-user"></i>: {{ $module->users()->count() }}
                             </small>
                             <small class="text-body-secondary">
-                                <i class="fa-solid fa-user-check"></i>: 2
+                                <i class="fa-solid fa-user-check"></i>: {{ $module->users()->where('status', 'finished')->count() }}
                             </small>
                         </div>
                         <small class="text-body-secondary">
@@ -38,8 +38,14 @@
 
                             @if($userModule->pivot->status === \App\Enums\ModuleAttendanceEnum::ACCEPTED)
                                 <a href="{{ route('modules.show', ['module' => $module]) }}"
-                                   class="btn btn-success d-grid">
+                                   class="btn btn-primary d-grid">
                                     Continuar Trilha
+                                </a>
+                            @elseif($userModule->pivot->status === \App\Enums\ModuleAttendanceEnum::FINISHED)
+
+                                <a href="{{ route('modules.show', ['module' => $module]) }}"
+                                   class="btn btn-success d-grid">
+                                    Trilha finalizada!
                                 </a>
                             @else
                                 <a href="{{ route('modules.show', ['module' => $module]) }}"

@@ -20,7 +20,7 @@
                             <i class="fa-solid fa-user"></i>: {{ $module->users()->count() }}
                         </small>
                         <small class="text-body-secondary">
-                            <i class="fa-solid fa-user-check"></i>: 2
+                            <i class="fa-solid fa-user-check"></i>: {{ $module->users()->where('status', 'finished')->count() }}
                         </small>
                     </div>
                 </div>
