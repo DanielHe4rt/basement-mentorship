@@ -62,7 +62,7 @@ class TasksController extends Controller
 
         return redirect()->route('tasks.show', [
             'module' => $module,
-            'taskProgress'  => $progress,
+            'taskProgress' => $progress,
         ]);
     }
 }

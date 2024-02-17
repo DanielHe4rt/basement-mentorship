@@ -22,51 +22,75 @@ class CourseSeeder extends Seeder
                 'thumbnail_url' => 'https://i.imgur.com/Zb2du2E.jpeg',
                 'tasks' => [
                     [
-                        'title' => 'Redação ENEM Tech',
-                        'thumbnail_url' => 'https://i.imgur.com/uILTzpv.jpeg',
-                        'description' => 'Escreva um texto dissertativo-argumentativo sobre a importância da tecnologia na sociedade.',
-                        'deadline' => now()->addDays(7),
-                        'order' => 1,
-                        'tips' => [
-                            'https://www.w3schools.com/html/',
-                            'https://developer.mozilla.org/pt-BR/docs/Web/HTML'
-                        ]
+                        'content' => [
+                            'title' => 'Redação ENEM Tech',
+                            'thumbnail_url' => 'https://i.imgur.com/uILTzpv.jpeg',
+                            'description' => 'Escreva um texto dissertativo-argumentativo sobre a importância da tecnologia na sociedade.',
+                            'deadline' => now()->addDays(7),
+                            'order' => 1,
+                            'tips' => [
+                                'https://www.w3schools.com/html/',
+                                'https://developer.mozilla.org/pt-BR/docs/Web/HTML'
+                            ],
+                        ],
+                        'todos' => [
+                            ['description' => 'Faça um rascunho das suas ideias'],
+                            ['description' => 'Valide as fontes de informação e cite-as no texto'],
+                            ['description' => 'Escreva algo com inicio, meio e fim.']
+                        ],
                     ],
                     [
-                        'title' => 'Browsers são FODAS!',
-                        'thumbnail_url' => 'https://i.imgur.com/eAhXBii.jpeg',
-                        'description' => 'Entenda como os navegadores funcionam e como eles interpretam o HTML, CSS e JavaScript.',
-                        'deadline' => now()->addDays(14),
-                        'order' => 2,
-                        'tips' => [
-                            'https://www.w3schools.com/css/',
-                            'https://developer.mozilla.org/pt-BR/docs/Web/CSS'
-                        ]
+                        'content' => [
+                            'title' => 'Browsers são FODAS!',
+                            'thumbnail_url' => 'https://i.imgur.com/eAhXBii.jpeg',
+                            'description' => 'Entenda como os navegadores funcionam e como eles interpretam o HTML, CSS e JavaScript.',
+                            'deadline' => now()->addDays(14),
+                            'order' => 2,
+                            'tips' => [
+                                'https://www.w3schools.com/css/',
+                                'https://developer.mozilla.org/pt-BR/docs/Web/CSS'
+                            ]
+                        ],
+                        'todos' => [
+                            ['description' => 'Faça um rascunho das suas ideias'],
+                        ],
                     ],
                     [
-                        'title' => 'Banco de Dados: uma abordagem pragmática',
-                        'thumbnail_url' => 'https://i.imgur.com/chABRAr.jpeg',
-                        'description' => 'Antes de escolher um banco de dados, entenda as diferenças entre os tipos de bancos de dados.',
-                        'deadline' => now()->addDays(21),
-                        'order' => 3,
-                        'tips' => [
-                            'https://www.w3schools.com/js/',
-                            'https://developer.mozilla.org/pt-BR/docs/Web/JavaScript'
-                        ]
+                        'content' => [
+                            'title' => 'Banco de Dados: uma abordagem pragmática',
+                            'thumbnail_url' => 'https://i.imgur.com/chABRAr.jpeg',
+                            'description' => 'Antes de escolher um banco de dados, entenda as diferenças entre os tipos de bancos de dados.',
+                            'deadline' => now()->addDays(21),
+                            'order' => 3,
+
+                            'tips' => [
+                                'https://www.w3schools.com/js/',
+                                'https://developer.mozilla.org/pt-BR/docs/Web/JavaScript'
+                            ],
+                        ],
+                        'todos' => [
+                            ['description' => 'Faça um rascunho das suas ideias'],
+                        ],
                     ]
                 ]
             ]
         ];
 
 
-        foreach($mentorings as $mentoring) {
+        foreach ($mentorings as $mentoring) {
             /** @var Module $module */
             $tasks = $mentoring['tasks'];
             unset($mentoring['tasks']);
 
             $module = Module::query()->create($mentoring);
-            $module->tasks()->createMany($tasks);
+            foreach ($tasks as $task) {
 
+                $taskModel = $module->tasks()->create($task['content']);
+
+                foreach($task['todos'] as $todo) {
+                    $taskModel->todos()->create($todo);
+                }
+            }
         }
     }
 }

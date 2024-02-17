@@ -14,6 +14,7 @@ class TaskService
 
     public function updateDraftTask(Progress $progress, array $payload): void
     {
+
         $this->repository->updateTask($progress, $payload);
         $this->repository->setProgress($progress, TaskProgressStatusEnum::Started);
     }

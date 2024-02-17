@@ -49,6 +49,6 @@ class Progress extends Model
             'task_progress_todos',
             'task_progress_id',
             'task_todo_id'
-        );
+        )->withTimestamps();
     }
 }

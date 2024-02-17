@@ -66,7 +66,7 @@
                     @foreach($taskProgress->task->todos as $todo)
                         <div class="form-check">
                             <input class="form-check-input" name="todos[{{$todo->id}}]" type="checkbox"
-                                   id="flexCheckDefault">
+                                   id="flexCheckDefault" @checked($taskProgress->todos->find($todo))>
                             <label class="form-check-label" for="flexCheckDefault">
                                 {{ $todo->description }}
                             </label>
