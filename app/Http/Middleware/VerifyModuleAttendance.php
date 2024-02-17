@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Enums\ModuleAttendanceEnum;
+use App\Enums\Module\ModuleAttendanceEnum;
 use App\Models\Module;
 use Closure;
 use Illuminate\Http\RedirectResponse;

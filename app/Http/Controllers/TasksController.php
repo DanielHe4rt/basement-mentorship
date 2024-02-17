@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\TaskActionEnum;
+use App\Enums\Task\TaskActionEnum;
 use App\Http\Requests\StartTaskRequest;
 use App\Http\Requests\TaskRequest;
 use App\Models\Module;
 use App\Models\Task\Progress;
 use App\Models\Task\Task;
-use Illuminate\Validation\ValidationException;
 
 class TasksController extends Controller
 {

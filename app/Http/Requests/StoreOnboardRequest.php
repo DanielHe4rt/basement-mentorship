@@ -2,10 +2,10 @@
 
 namespace App\Http\Requests;
 
-use App\Enums\BasedPlaceEnum;
-use App\Enums\JobRoleEnum;
-use App\Enums\PronounEnum;
-use App\Enums\SeniorityEnum;
+use App\Enums\User\BasedPlaceEnum;
+use App\Enums\User\JobRoleEnum;
+use App\Enums\User\PronounEnum;
+use App\Enums\User\SeniorityEnum;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rules\Enum;
 

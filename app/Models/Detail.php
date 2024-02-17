@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use App\Enums\PronounEnum;
-use App\Enums\SeniorityEnum;
+use App\Enums\User\PronounEnum;
+use App\Enums\User\SeniorityEnum;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 

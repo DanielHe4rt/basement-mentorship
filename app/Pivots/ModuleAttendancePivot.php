@@ -2,7 +2,7 @@
 
 namespace App\Pivots;
 
-use App\Enums\ModuleAttendanceEnum;
+use App\Enums\Module\ModuleAttendanceEnum;
 use Illuminate\Database\Eloquent\Relations\Pivot;
 
 class ModuleAttendancePivot extends Pivot

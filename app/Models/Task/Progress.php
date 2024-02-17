@@ -2,6 +2,7 @@
 
 namespace App\Models\Task;
 
+use App\Enums\Task\TaskProgressStatusEnum;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -23,6 +24,7 @@ class Progress extends Model
 
     protected $casts = [
         'delivered_at' => 'datetime',
+        'status' => TaskProgressStatusEnum::class,
     ];
 
     public function user(): BelongsTo
@@ -33,6 +35,11 @@ class Progress extends Model
     public function task(): BelongsTo
     {
         return $this->belongsTo(Task::class);
+    }
+
+    public function attendantsCount(): int
+    {
+        return $this->where('task_id', $this->attributes['task_id'])->count();
     }
 
     public function todos(): BelongsToMany

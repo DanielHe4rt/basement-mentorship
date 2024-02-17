@@ -36,12 +36,12 @@
                     <div>
                         @if($userModule = $userModules->find($module))
 
-                            @if($userModule->pivot->status === \App\Enums\ModuleAttendanceEnum::ACCEPTED)
+                            @if($userModule->pivot->status === \App\Enums\Module\ModuleAttendanceEnum::ACCEPTED)
                                 <a href="{{ route('modules.show', ['module' => $module]) }}"
                                    class="btn btn-primary d-grid">
                                     Continuar Trilha
                                 </a>
-                            @elseif($userModule->pivot->status === \App\Enums\ModuleAttendanceEnum::FINISHED)
+                            @elseif($userModule->pivot->status === \App\Enums\Module\ModuleAttendanceEnum::FINISHED)
 
                                 <a href="{{ route('modules.show', ['module' => $module]) }}"
                                    class="btn btn-success d-grid">

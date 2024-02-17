@@ -30,26 +30,25 @@
 
             <div class="col">
                 <div class="card-body">
+                    <p class="card-text">
+                        <small class="text-body-secondary">
+                            <i class="fa-solid fa-calendar"></i>: 4 Feb
+                        </small>
+                        <small class="text-body-secondary">
+                            <i class="fa-solid fa-user"></i>: {{ $taskProgress->attendantsCount() }}
+                        </small>
+                        <small class="text-body-secondary">
+                            <i class="fa-solid fa-user-check"></i>: {{ $taskProgress->where('status' , 'completed')->count() }}
+                        </small>
+                    </p>
                     <h5 class="card-title">{{ $taskProgress->task->title }}</h5>
                     <p class="card-text">
                         {{ $taskProgress->task->description }}
                     </p>
 
-                    <div class="row">
-                        <div class="col">
-                            <p class="card-text">
-                                <small class="text-body-secondary">
-                                    <i class="fa-solid fa-calendar"></i>: 4 Feb
-                                </small>
-                                <small class="text-body-secondary">
-                                    <i class="fa-solid fa-user"></i>: 10
-                                </small>
-                                <small class="text-body-secondary">
-                                    <i class="fa-solid fa-user-check"></i>: 2
-                                </small>
-                            </p>
-                        </div>
-                    </div>
+                    <span class="btn btn-{{ $taskProgress->status->getLabel() }}">
+                        {{ $taskProgress->status->getMessage() }}
+                    </span>
                 </div>
 
             </div>

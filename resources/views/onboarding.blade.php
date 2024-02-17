@@ -63,7 +63,7 @@
                     <div class="mb-3">
                         <label for="role" class="form-label">Área Desejada de estudo</label>
                         <select class="form-select" id="role" name="role" value="{{old('role')}}" required>
-                            @foreach(\App\Enums\JobRoleEnum::cases() as $case)
+                            @foreach(\App\Enums\User\JobRoleEnum::cases() as $case)
                                 <option value="{{ $case->value }}">{{ str($case->name)->replace('_', ' ') }}</option>
                             @endforeach
                         </select>
@@ -74,7 +74,7 @@
                         <label for="seniority" class="form-label">Senioridade</label>
                         <select class="form-select" id="seniority" name="seniority" value="{{old('seniority')}}"
                                 required>
-                            @foreach(\App\Enums\SeniorityEnum::cases() as $case)
+                            @foreach(\App\Enums\User\SeniorityEnum::cases() as $case)
                                 <option value="{{ $case->value }}">{{ str($case->name)->replace('_', ' ') }}</option>
                             @endforeach
                         </select>
@@ -84,7 +84,7 @@
                     <div class="mb-3">
                         <label for="based_in" class="form-label">Onde você se encontra hoje?</label>
                         <select class="form-select" id="based_in" name="based_in" value="{{old('based_in')}}" required>
-                            @foreach(\App\Enums\BasedPlaceEnum::cases() as $base)
+                            @foreach(\App\Enums\User\BasedPlaceEnum::cases() as $base)
                                 <option
                                     value="{{ $base->value }}">{{ str($base->name)->replace('_', ' ')->lower()->ucfirst() }}</option>
                             @endforeach
@@ -95,7 +95,7 @@
                     <div class="mb-3">
                         <label for="pronouns" class="form-label">Pronomes</label>
                         <select class="form-select" id="pronouns" name="pronouns" value="{{old('pronouns')}}" required>
-                            @foreach(\App\Enums\PronounEnum::cases() as $base)
+                            @foreach(\App\Enums\User\PronounEnum::cases() as $base)
                                 <option
                                     value="{{ $base->value }}">{{ str($base->name)->replace('_', '/')->lower() }}</option>
                             @endforeach
