@@ -8,9 +8,13 @@ use App\Http\Requests\TaskRequest;
 use App\Models\Module;
 use App\Models\Task\Progress;
 use App\Models\Task\Task;
+use App\Services\TaskService;
 
 class TasksController extends Controller
 {
+    public function __construct(private readonly TaskService $service)
+    {
+    }
 
     public function getTask(Module $module, Progress $taskProgress)
     {
@@ -44,24 +48,21 @@ class TasksController extends Controller
 
     public function postTaskAction(
         TaskRequest    $request,
+        Module         $module,
         Progress       $progress,
         TaskActionEnum $action
     )
     {
         $payload = $request->validated();
 
-        $fn = match ($action) {
-            TaskActionEnum::Draft => function () use ($progress, $payload) {
-                $progress->update(['content' => $payload['content']]);
-                if (isset($payload['todos'])) {
-                    $progress->todos()->sync(array_keys($payload['todos']));
-                }
-            },
-            TaskActionEnum::Submit => throw new \Exception('To be implemented'),
+        match ($action) {
+            TaskActionEnum::Draft => $this->service->updateDraftTask($progress, $payload),
+            TaskActionEnum::Submit => $this->service->sendTaskForReview($progress, $payload),
         };
 
-        $fn();
-
-        return redirect()->route('tasks.show', $progress);
+        return redirect()->route('tasks.show', [
+            'module' => $module,
+            'taskProgress'  => $progress,
+        ]);
     }
 }

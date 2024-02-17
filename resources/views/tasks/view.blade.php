@@ -54,7 +54,7 @@
             </div>
         </div>
     </div>
-    <form id="taskForm" method="POST" action="">
+    <form id="taskForm" method="POST">
         @csrf
         <div class="row">
             <div class="col-12 col-md-6">
@@ -63,8 +63,6 @@
                         <h3>Lista de Tarefas</h3>
                         <p>Não são necessários, porém marcam aquele progresso.</p>
                     </div>
-
-
                     @foreach($taskProgress->task->todos as $todo)
                         <div class="form-check">
                             <input class="form-check-input" name="todos[{{$todo->id}}]" type="checkbox"
@@ -91,8 +89,25 @@
 
         <hr>
         <h3>Task Resolution</h3>
-        <label for="codeMirror"></label>
-        <textarea name="content" id="codeMirror"></textarea>
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <a class="nav-link active" data-bs-toggle="tab" href="#edit" aria-selected="true" role="tab">Edição</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#taskPreview" id="previewTrigger" aria-selected="false"
+                   tabindex="-1" role="tab">Visualização</a>
+            </li>
+        </ul>
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade show active" id="edit" role="tabpanel">
+                <label for="codeMirror"></label>
+                <textarea name="content" id="codeMirror">{{ $taskProgress->content }}</textarea>
+            </div>
+            <div class="tab-pane fade" id="taskPreview" role="tabpanel">
+
+            </div>
+        </div>
+
         <br>
         <button id="btnSubmit" class="btn btn-success">Enviar</button>
         <button id="btnDraft" class="btn btn-info">Salvar Rascunho</button>
@@ -105,31 +120,49 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/darcula.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.js"></script>
 
+
+    <script type="module">
+        import {marked} from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
+
+        const previewTriggerEl = document.getElementById('previewTrigger')
+        const taskPreviewEl = document.getElementById('taskPreview')
+        const previewContent = document.getElementById('codeMirror');
+
+        previewTriggerEl.addEventListener('click', function (e) {
+            console.log(previewContent)
+            taskPreviewEl.innerHTML = marked.parse(myCodeMirror.getValue());
+        });
+
+
+    </script>
+
     <script>
         const btnDraftEl = document.getElementById('btnDraft');
         const btnSubmitEl = document.getElementById('btnSubmit');
         const formEl = document.getElementById('taskForm');
         const taskId = '{{$taskProgress->id}}';
-
+        const moduleId = '{{$module->id}}'
 
         btnDraftEl.addEventListener('click', function (e) {
-            let uri = `/tasks/${taskId}/draft`;
+            let uri = `{{ route('tasks.action', ['module' => $module->id, 'progress' => $taskProgress->id, 'action' => 'draft']) }}`;
             formEl.setAttribute('action', uri)
             formEl.submit();
         })
 
         btnSubmitEl.addEventListener('click', function (e) {
-            let uri = `/tasks/${taskId}/submit`;
+            let uri = `{{ route('tasks.action', ['module' => $module->id, 'progress' => $taskProgress->id, 'action' => 'submit']) }}`;
             formEl.setAttribute('action', uri)
             formEl.submit();
         })
     </script>
     <script>
         let codeMirrorEl = document.getElementById('codeMirror');
-        var myCodeMirror = CodeMirror.fromTextArea(codeMirrorEl, {
+        const myCodeMirror = CodeMirror.fromTextArea(codeMirrorEl, {
             lineNumbers: true,
             theme: 'darcula'
         });
+
+
     </script>
 
 @endsection

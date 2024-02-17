@@ -49,8 +49,8 @@ Route::prefix('/modules')
             ->middleware('module.attendance')
             ->group(function () {
                 Route::get('/', [ModulesController::class, 'getModule'])->name('modules.show');
-                Route::post('/tasks/{task}/init', [TasksController::class, 'postInitTask'])->name('tasks.init');
                 Route::post('/tasks/{progress}/{action}', [TasksController::class, 'postTaskAction'])->name('tasks.action');
+                Route::post('/tasks/{task}/init', [TasksController::class, 'postInitTask'])->name('tasks.init');
                 Route::get('/tasks/{taskProgress}', [TasksController::class, 'getTask'])->name('tasks.show');
             });
     });

@@ -18,6 +18,7 @@ class VerifyModuleAttendance
     {
         /** @var Module $module */
         $module = $request->module;
+        $module = Module::find($module->id ?? $module);
 
         if (!$userModule = $module->users()->find(auth()->user()->getKey())) {
             return $this->redirectWithErrorMessage('Boa pergunta');
