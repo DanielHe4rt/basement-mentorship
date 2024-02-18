@@ -3,9 +3,6 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use App\Models\Module;
-use App\Models\Task\Task;
-use App\Models\Task\Todo;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder

@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use App\Enums\Task\TaskActionEnum;
 use App\Http\Requests\StartTaskRequest;
 use App\Http\Requests\TaskRequest;
-use App\Models\Module;
-use App\Models\Task\Progress;
-use App\Models\Task\Task;
+use App\Models\Module\Module;
+use App\Models\Module\Task\Task;
+use App\Models\Users\Progress;
 use App\Services\TaskService;
 
 class TasksController extends Controller

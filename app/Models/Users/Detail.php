@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Users;
 
 use App\Enums\User\PronounEnum;
 use App\Enums\User\SeniorityEnum;

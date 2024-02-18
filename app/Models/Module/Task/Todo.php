@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Task;
+namespace App\Models\Module\Task;
 
 use Database\Factories\TodoFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

@@ -2,10 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Module;
-use App\Models\Task\Task;
-use App\Models\Task\Todo;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Module\Module;
 use Illuminate\Database\Seeder;
 
 class CourseSeeder extends Seeder

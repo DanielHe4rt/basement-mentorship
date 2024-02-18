@@ -3,7 +3,7 @@
 namespace App\Services;
 
 use App\Enums\Task\TaskProgressStatusEnum;
-use App\Models\Task\Progress;
+use App\Models\Users\Progress;
 use App\Repositories\TaskProgressRepository;
 
 class TaskService

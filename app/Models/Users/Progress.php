@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Models\Task;
+namespace App\Models\Users;
 
 use App\Enums\Task\TaskProgressStatusEnum;
-use App\Models\User;
+use App\Models\Module\Task\Task;
+use App\Models\Module\Task\Todo;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;

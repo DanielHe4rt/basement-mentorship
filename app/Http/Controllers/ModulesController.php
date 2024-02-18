@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Module;
-use App\Models\Task\Progress;
-use App\Models\Task\Task;
+use App\Models\Module\Module;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 

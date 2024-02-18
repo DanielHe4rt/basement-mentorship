@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Module;
-use App\Models\Task\Progress;
-use App\Models\Task\Task;
+use App\Models\Module\Module;
+use App\Models\Module\Task\Task;
+use App\Models\Users\Progress;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StartTaskRequest extends FormRequest

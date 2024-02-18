@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Module;
 
-use App\Models\Task\Task;
+use App\Models\Module\Task\Task;
+use App\Models\Users\User;
 use App\Pivots\ModuleAttendancePivot;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Models\Task;
+namespace App\Models\Module\Task;
 
+use App\Models\Users\Progress;
 use Database\Factories\TaskFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

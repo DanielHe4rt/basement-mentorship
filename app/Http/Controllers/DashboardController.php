@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreOnboardRequest;
-use App\Models\Module;
 use Illuminate\View\View;
 
 class DashboardController extends Controller

@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Users;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use App\Models\Task\Progress;
+use App\Models\Auth\Token;
+use App\Models\Module\Module;
 use App\Pivots\ModuleAttendancePivot;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;

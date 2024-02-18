@@ -2,8 +2,8 @@
 
 namespace Database\Factories;
 
-use App\Models\Task\Task;
-use App\Models\Task\Todo;
+use App\Models\Module\Task\Task;
+use App\Models\Module\Task\Todo;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class TodoFactory extends Factory

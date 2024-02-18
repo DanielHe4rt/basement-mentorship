@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreOnboardRequest;
-use App\Models\User;
+use App\Models\Users\User;
 use Illuminate\View\View;
 
 class OnboardingController extends Controller
