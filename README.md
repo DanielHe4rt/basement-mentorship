@@ -14,11 +14,9 @@ At the user side, we're running:
 - Bootstrap
 - jQuery
 
-and on the Admin side, we're running:
+and on the Admin side, we're running `FilamentPHP`.
 
-- FilamentPHP
-
-and this will be the stack until I decided to do something better (on user side).
+This will be the stack until I decided to do something better (on user side).
 
 ### Authenticatin
 
