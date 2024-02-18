@@ -14,11 +14,12 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('github_id');
+            $table->string('github_id')->unique();
             $table->string('github_username');
             $table->string('description');
             $table->string('email')->unique();
             $table->string('onboarded')->default(false);
+            $table->string('password')->nullable();
             $table->timestamps();
         });
     }

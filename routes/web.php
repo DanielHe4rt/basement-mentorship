@@ -6,6 +6,8 @@ use App\Http\Controllers\LandingController;
 use App\Http\Controllers\ModulesController;
 use App\Http\Controllers\OnboardingController;
 use App\Http\Controllers\TasksController;
+use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +23,25 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LandingController::class, 'getLanding'])
     ->name('landing');
+
+if(config('app.env') === 'local') {
+    Route::get('/mailable', function () {
+        $mailable = (new MailMessage)
+            ->subject(Lang::get('Mentorias Fodas'))
+            ->line(Lang::get('Se você está recebendo esse e-mail, significa que você foi aprovado/a em nossa mentoria!'))
+            ->line(Lang::get('A trilha selecionada foi **' . 'trilha-foda' .  '**, e você deverá concluí-la na maior calma do mundo!'))
+            ->line(Lang::get('
+                Como isso é um processo de aprimoramento, eu gostaria MUITO que você fizesse as tarefas utilizando os meios comuns de estudo.
+            '))
+            ->action(Lang::get('Começar Trilha'), route('module.index'))
+            ->line(Lang::get('This password reset link will expire in :count minutes.', ['count' => config('auth.passwords.'.config('auth.defaults.passwords').'.expire')]))
+            ->line(Lang::get('If you did not request a password reset, no further action is required.'));
+
+        return $mailable;
+    });
+}
+
+
 
 Route::get('/oauth/{provider}/redirect', [AuthController::class, 'getRedirect'])->name('auth.redirect');
 Route::get('/oauth/{provider}/callback', [AuthController::class, 'getAuthenticate'])->name('auth.store');

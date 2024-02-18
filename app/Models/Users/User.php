@@ -6,6 +6,8 @@ namespace App\Models\Users;
 use App\Models\Auth\Token;
 use App\Models\Module\Module;
 use App\Pivots\ModuleAttendancePivot;
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -14,7 +16,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class User extends Authenticatable implements FilamentUser
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -30,10 +32,12 @@ class User extends Authenticatable
         'description',
         'email',
         'onboarded',
+        'password'
     ];
 
     protected $casts = [
-        'onboarded' => 'boolean'
+        'onboarded' => 'boolean',
+        'github_id' => 'int'
     ];
 
     public function getImageUrlAttribute(): string
@@ -74,4 +78,8 @@ class User extends Authenticatable
         $this->update(['onboarded'=> true]);
     }
 
+    public function canAccessPanel(Panel $panel): bool
+    {
+        return true;
+    }
 }
