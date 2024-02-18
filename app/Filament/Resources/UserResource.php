@@ -9,6 +9,7 @@ use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -31,7 +32,8 @@ class UserResource extends Resource
     {
         return $form
             ->schema([
-                Fieldset::make('Informações gerais')
+                Section::make('General Informations')
+                    ->collapsible()
                     ->schema([
                         TextInput::make('name')
                             ->required()
@@ -53,8 +55,10 @@ class UserResource extends Resource
                             ->required()
                             ->maxLength(255)
                             ->default(0),
-                    ]),
-                Fieldset::make('User Details')
+                    ])->columns(2),
+                Section::make('User details')
+                    ->columns(2)
+                    ->collapsible()
                     ->relationship('details')
                     ->schema([
                         TextInput::make('company')
@@ -133,7 +137,8 @@ class UserResource extends Resource
             ->actions([
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
-                Action::make('user_modules')->icon('heroicon-o-clipboard-document-list')->label('Modules')->color('success'),
+                Action::make('user_modules')->icon('heroicon-o-clipboard-document-list')->label('Modules')->color('success')
+                // ->url(fn(User $record): string => route('users.user-modules', $record))
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
