@@ -131,7 +131,7 @@ class UserResource extends Resource
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
                 Action::make('user_modules')->icon('heroicon-o-clipboard-document-list')->label('Modules')->color('success')
-                // ->url(fn(User $record): string => route('users.user-modules', $record))
+                    //->url(fn(User $record): string => route('users.user-modules', $record))
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

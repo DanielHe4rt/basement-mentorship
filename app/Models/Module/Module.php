@@ -3,8 +3,9 @@
 namespace App\Models\Module;
 
 use App\Models\Module\Task\Task;
+use App\Models\Users\ModuleAttendance;
 use App\Models\Users\User;
-use App\Pivots\ModuleAttendancePivot;
+use Database\Factories\ModuleFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -32,8 +33,13 @@ class Module extends Model
             'users_modules',
             'module_id',
             'user_id'
-        )->using(ModuleAttendancePivot::class)
+        )->using(ModuleAttendance::class)
             ->withPivot('status')
             ->withTimestamps();
+    }
+
+    protected static function newFactory(): ModuleFactory
+    {
+        return ModuleFactory::new();
     }
 }

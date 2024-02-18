@@ -4,11 +4,15 @@ namespace App\Models\Users;
 
 use App\Enums\User\PronounEnum;
 use App\Enums\User\SeniorityEnum;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Detail extends Model
+class Details extends Model
 {
+    use HasFactory;
+
+
     protected $table = 'user_details';
 
     protected $fillable = [

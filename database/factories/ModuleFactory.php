@@ -14,7 +14,7 @@ class ModuleFactory extends Factory
         return [
             'name' => $this->faker->sentence(),
             'description' => $this->faker->text(),
-            'thumbnail_url' => $this->faker->imageUrl()
+            'thumbnail_url' => 'https://http.cat/' . $this->faker->randomElement([200, 201, 420, 404, 500, 422, 301, 302])
         ];
     }
 }

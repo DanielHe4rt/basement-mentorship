@@ -5,7 +5,6 @@ namespace App\Models\Users;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Auth\Token;
 use App\Models\Module\Module;
-use App\Pivots\ModuleAttendancePivot;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -57,7 +56,7 @@ class User extends Authenticatable implements FilamentUser
 
     public function details(): HasOne
     {
-        return $this->hasOne(Detail::class);
+        return $this->hasOne(Details::class);
     }
 
     public function modules(): BelongsToMany
@@ -67,7 +66,7 @@ class User extends Authenticatable implements FilamentUser
             'users_modules',
             'user_id',
             'module_id',
-        )->using(ModuleAttendancePivot::class)
+        )->using(ModuleAttendance::class)
             ->withPivot('status')
             ->withTimestamps();
     }
