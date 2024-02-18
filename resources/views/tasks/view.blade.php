@@ -89,13 +89,19 @@
 
         <hr>
         <h3>Resolução da Tarefa</h3>
-        <ul class="nav nav-tabs" role="tablist">
+        <ul class="nav nav-tabs outlined" role="tablist">
             <li class="nav-item" role="presentation">
                 <a class="nav-link active" data-bs-toggle="tab" href="#edit" aria-selected="true" role="tab">Edição</a>
             </li>
             <li class="nav-item" role="presentation">
                 <a class="nav-link" data-bs-toggle="tab" href="#taskPreviewEl" id="previewTrigger" aria-selected="false"
                    tabindex="-1" role="tab">Visualização</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link bg-info text-white" data-bs-toggle="tab" href="#taskComment" id="commentTab" aria-selected="false" tabindex="-1" role="tab">
+                    <i class="fa-regular fa-comment"></i>
+                    Comentário
+                </a>
             </li>
         </ul>
         <div id="myTabContent" class="tab-content">
