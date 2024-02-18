@@ -2,10 +2,23 @@
 
 Basement Mentorships is a web application that allows users to find mentors and mentees in the tech industry. Users can create a profile, search for mentors and mentees, and request mentorships.
 
+
 ## About the project
 
 Since I decided to mentor many people as possible and asyncronously, came the need of a simple platform to handle that.
 FYI this code doesn't follow the best practices and I would not tell you to use this code to study until this message vanishes lol.
+
+At the user side, we're running:
+
+- Laravel Blade
+- Bootstrap
+- jQuery
+
+and on the Admin side, we're running:
+
+- FilamentPHP
+
+and this will be the stack until I decided to do something better (on user side).
 
 ### Authenticatin
 
@@ -13,16 +26,35 @@ The application uses GitHub OAuth for authentication since it's a tech platform 
 
 ### Models
 
+Just a quick explanation of the Models used in the project so far.
+
 | Model    | Description                                             |
 |----------|---------------------------------------------------------|
 | User     | Meentored person.                                       |
-| Token    | OAuth Credentials.                                      |
+| Token    | OAuth Credentials for requesting further details.       |
 | Details  | Onboarding information for mentoring approval purposes. |
 | Progress | User task progress with status enumeration.             |
 | Module   | Mentoring module that the user will apply.              |
 | Task     | Task of a specific module                               |
 | Todo     | Items of a task that would be cool to deliver.          |
 
+### Handling Module Acceptance
+
+The most important table for this project is the `users_modules` which handles the acceptance of a mentee in a specific mentoring. 
+
+The pivot is managed by the `ModuleAttendanceEnum` with the flags: 
+```php
+namespace App\Enums\Module;
+
+enum ModuleAttendanceEnum: string
+{
+    case ON_HOLD = 'onhold';
+    case ACCEPTED = 'accepted';
+    case FINISHED = 'finished';
+}
+```
+
+and also the Todo Tasks
 
 ## Prerequisites
 
