@@ -26,6 +26,7 @@ class AttendanceApprovalAction extends Action
     {
         parent::setUp();
 
+        $this->visible(fn ($record) => $record->status == ModuleAttendanceEnum::ON_HOLD);
 
         $this->color('success');
         $this->icon(FilamentIcon::resolve('actions::edit-action') ?? 'heroicon-m-pencil-square');
