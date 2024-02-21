@@ -14,7 +14,7 @@ enum ModuleAttendanceEnum: string implements HasLabel, HasColor
 
     public function getLabel(): ?string
     {
-        return $this->value;
+        return __('views.attendance.labels.'. $this->value);
     }
 
     public function getColor(): string|array|null

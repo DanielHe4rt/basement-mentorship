@@ -5,6 +5,8 @@ namespace App\Providers\Filament;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Filament\Notifications\Livewire\DatabaseNotifications;
+use Filament\Notifications\Notification;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
@@ -22,10 +24,12 @@ class AdminPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
     {
+        DatabaseNotifications::trigger('filament-notifications.database-notifications-trigger');
         return $panel
             ->default()
             ->id('admin')
             ->path('admin')
+            ->databaseNotifications()
             ->login()
             ->colors([
                 'primary' => Color::Blue,

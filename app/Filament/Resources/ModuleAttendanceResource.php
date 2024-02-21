@@ -5,16 +5,14 @@ namespace App\Filament\Resources;
 use App\Enums\Module\ModuleAttendanceEnum;
 use App\Filament\Resources\ModuleAttendanceResource\Actions\AttendanceApprovalAction;
 use App\Filament\Resources\ModuleAttendanceResource\Pages;
-use App\Filament\Resources\ModuleAttendanceResource\RelationManagers;
 use App\Models\Users\ModuleAttendance;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Notifications\Actions\Action;
 
 class ModuleAttendanceResource extends Resource
 {
