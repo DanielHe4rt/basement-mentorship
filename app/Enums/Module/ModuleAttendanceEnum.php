@@ -11,6 +11,7 @@ enum ModuleAttendanceEnum: string implements HasLabel, HasColor
     case ACCEPTED = 'accepted';
     case FINISHED = 'finished';
 
+
     public function getLabel(): ?string
     {
         return $this->value;

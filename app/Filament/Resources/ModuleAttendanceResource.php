@@ -2,6 +2,8 @@
 
 namespace App\Filament\Resources;
 
+use App\Enums\Module\ModuleAttendanceEnum;
+use App\Filament\Resources\ModuleAttendanceResource\Actions\AttendanceApprovalAction;
 use App\Filament\Resources\ModuleAttendanceResource\Pages;
 use App\Filament\Resources\ModuleAttendanceResource\RelationManagers;
 use App\Models\Users\ModuleAttendance;
@@ -26,20 +28,24 @@ class ModuleAttendanceResource extends Resource
             ->schema([
                 Forms\Components\Select::make('module_id')
                     ->relationship('module', 'name')
+                    ->disabled()
                     ->required(),
                 Forms\Components\Select::make('user_id')
                     ->relationship('user', 'name')
+                    ->disabled()
                     ->required(),
-                Forms\Components\TextInput::make('status')
+                Forms\Components\Select::make('status')
                     ->required()
-                    ->maxLength(255)
-                    ->default('onhold'),
+                    ->options(ModuleAttendanceEnum::class),
+                Forms\Components\Textarea::make('description', '')
             ]);
     }
 
     public static function table(Table $table): Table
     {
         // TODO: removing id from table asap.
+
+
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('module.name')
@@ -59,6 +65,7 @@ class ModuleAttendanceResource extends Resource
                 //
             ])
             ->actions([
+                AttendanceApprovalAction::make(),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([

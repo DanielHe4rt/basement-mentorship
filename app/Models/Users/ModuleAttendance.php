@@ -5,6 +5,7 @@ namespace App\Models\Users;
 use App\Enums\Module\ModuleAttendanceEnum;
 use App\Models\Module\Module;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 use Illuminate\Database\Eloquent\Relations\Pivot;
 
 class ModuleAttendance extends Pivot
@@ -19,6 +20,11 @@ class ModuleAttendance extends Pivot
     public function module(): BelongsTo
     {
         return $this->belongsTo(Module::class);
+    }
+
+    public function accept(): void
+    {
+        $this->update(['status' => ModuleAttendanceEnum::ACCEPTED]);
     }
 
     protected $casts = [
